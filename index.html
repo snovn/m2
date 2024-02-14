@@ -17,17 +17,10 @@
         transition: background-color 0.5s;
       }
 
-      button {
-        background-color: red;
-        color: white;
-        padding: 15px 30px;
-        font-size: 18px;
-        border: none;
+      a.button img {
+        width: 200px; /* Adjust width as needed */
+        height: auto; /* Maintain aspect ratio */
         cursor: pointer;
-      }
-
-      button:hover {
-        background-color: darkred;
       }
 
       /* Add this to your existing CSS */
@@ -70,13 +63,15 @@
         }
       }
 
-      button:active {
+      a.button:active img {
         animation: pulse 0.3s linear;
       }
     </style>
   </head>
   <body>
-    <button onclick="hideButton(); startConfetti();">Don't Click Me</button>
+    <a href="#" class="button" onclick="hideButton(); startConfetti();">
+      <img src="gift.png" alt="Gift" />
+    </a>
 
     <div id="hiddenContent">
       <h1>Happy Birthday!</h1>
@@ -85,14 +80,13 @@
         Your browser does not support the audio element.
       </audio>
       <audio id="yayAudio" src="yay.mp3" preload="auto"></audio>
-
       <img src="img.png" alt="penis" />
       <p>"average 14 yo but not average penis size"</p>
     </div>
 
     <script>
       function hideButton() {
-        var button = document.querySelector("button");
+        var button = document.querySelector("a.button");
         button.style.display = "none";
         document.body.style.backgroundColor = "white";
         document.getElementById("hiddenContent").style.display = "block";

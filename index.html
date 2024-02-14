@@ -50,7 +50,36 @@
         display: none;
       }
 
-      /* Add this to your existing CSS */
+      /* Apply the shake animation to the image inside the hiddenContent */
+      #hiddenContent img.shake {
+        animation: shake 0.5s infinite alternate;
+      }
+
+      /* Define the shake animation */
+      @keyframes shake {
+        0% {
+          transform: rotate(0deg);
+        }
+        25% {
+          transform: rotate(-5deg);
+        }
+        50% {
+          transform: rotate(5deg);
+        }
+        75% {
+          transform: rotate(-5deg);
+        }
+        100% {
+          transform: rotate(5deg);
+        }
+      }
+
+      /* Add the pulse animation to the image on button click */
+      a.button:active img {
+        animation: pulse 0.3s linear;
+      }
+
+      /* Define the pulse animation */
       @keyframes pulse {
         0% {
           transform: scale(1);
@@ -61,10 +90,6 @@
         100% {
           transform: scale(1);
         }
-      }
-
-      a.button:active img {
-        animation: pulse 0.3s linear;
       }
     </style>
   </head>
@@ -80,7 +105,7 @@
         Your browser does not support the audio element.
       </audio>
       <audio id="yayAudio" src="yay.mp3" preload="auto"></audio>
-      <img src="img.png" alt="penis" />
+      <img src="img.png" alt="penis" class="shake" />
       <p>"average 14 yo but not average penis size"</p>
     </div>
 

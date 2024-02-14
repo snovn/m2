@@ -13,6 +13,8 @@
         justify-content: center;
         align-items: center;
         height: 100vh;
+        font-family: "Comic Sans MS", "Comic Sans", cursive;
+        transition: background-color 0.5s;
       }
 
       button {
@@ -27,11 +29,77 @@
       button:hover {
         background-color: darkred;
       }
+
+      /* Add this to your existing CSS */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      #hiddenContent {
+        display: none;
+        color: black;
+        font-size: 24px;
+        text-align: center;
+        position: absolute;
+        top: 43%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 9999;
+        animation: fadeIn 1s ease forwards;
+      }
+
+      #audio {
+        display: none;
+      }
+
+      /* Add this to your existing CSS */
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.1);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      button:active {
+        animation: pulse 0.3s linear;
+      }
     </style>
   </head>
   <body>
-    <button onclick="alert('I told you not to click me!')">
-      Don't Click Me
-    </button>
+    <button onclick="hideButton(); startConfetti();">Don't Click Me</button>
+
+    <div id="hiddenContent">
+      <h1>Happy Birthday!</h1>
+      <audio id="audio" controls autoplay>
+        <source src="audio.mp3" type="audio/mpeg" />
+        Your browser does not support the audio element.
+      </audio>
+      <audio id="yayAudio" src="yay.mp3" preload="auto"></audio>
+
+      <img src="img.png" alt="penis" />
+      <p>"average 14 yo but not average penis size"</p>
+    </div>
+
+    <script>
+      function hideButton() {
+        var button = document.querySelector("button");
+        button.style.display = "none";
+        document.body.style.backgroundColor = "white";
+        document.getElementById("hiddenContent").style.display = "block";
+        document.getElementById("audio").play();
+        document.getElementById("yayAudio").play(); // Play the yay.mp3
+      }
+    </script>
+    <script src="confetti.js"></script>
   </body>
 </html>
